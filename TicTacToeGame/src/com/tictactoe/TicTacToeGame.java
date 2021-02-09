@@ -163,6 +163,8 @@ public class TicTacToeGame {
 			if(posiToBlock == 0)
 			{
 			
+
+			
 			boolean check = true;
 			while(check)
 			{
@@ -179,7 +181,7 @@ public class TicTacToeGame {
 				
 			}
 			
-		}
+			}
 			else 
 			{
 				position = posiToBlock;	
@@ -189,6 +191,8 @@ public class TicTacToeGame {
 				turn = 0;
 				System.out.println("Player's turn");
 			}
+
+			
 				
 			
 	}
@@ -272,7 +276,6 @@ public class TicTacToeGame {
 			}
 			return gotWinner;
 		}
-
 		public static int blockPosition()
 		{
 			int positionToBlock = 0 ;
@@ -335,6 +338,8 @@ public class TicTacToeGame {
 
 			return positionToBlock;
 		}
+
+		
 // main class
 	public static void main(String args[]) {
 
