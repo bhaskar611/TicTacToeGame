@@ -16,7 +16,8 @@ public class TicTacToeGame {
 		return board;
 
 	} 
-	 private static void Choosesymbol()
+	 
+	 private static void chooseSymbol()
 	 {
 		 int symbol = (int) Math.floor(Math.random() * 10) % 2;
 		 if(symbol == 0 ) {
@@ -88,7 +89,19 @@ public class TicTacToeGame {
 		}
 	 
 	 
-
+	 public static int makeToss()
+		{
+			int tossResult = (int) Math.floor(Math.random() * 10) % 2;
+			if(tossResult == 0)
+			{
+				System.out.println("User/Player plays first");
+			}
+			else
+			{
+				System.out.println("Computer plays first");
+			}
+			return tossResult;
+		}
 	// taking position from player where he wants to put his input
 		public static void playerMove()
 		{
@@ -123,9 +136,10 @@ public class TicTacToeGame {
 
 		System.out.println("Welcome to tic tac board");
 		board=creatingBoard();
-		Choosesymbol();
+		
+		chooseSymbol();
 		showBoard();
 		playerMove();
-
+		 int toss = makeToss();
 	}
 }
