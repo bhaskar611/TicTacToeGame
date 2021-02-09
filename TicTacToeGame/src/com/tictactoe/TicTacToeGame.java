@@ -72,6 +72,11 @@ public class TicTacToeGame {
 		 
 		} 
 	 }
+
+	 
+
+	 
+	 
 	 public static void showBoard() {
 			System.out.println("Empty board looks like :");
 			System.out.println("");
@@ -81,6 +86,9 @@ public class TicTacToeGame {
 			System.out.println("  -------------------");
 			System.out.println("   " + board[7] + "   " + "|" + "   " + board[8] + "   " + "|" + "   " + board[9] + "   ");
 		}
+	 
+	 
+
 	// taking position from player where he wants to put his input
 		public static void playerMove()
 		{
@@ -92,7 +100,7 @@ public class TicTacToeGame {
 			if(board[position]==' ')
 			{
 				board[position] = playerSymbol;
-				showBoard();
+				 showBoard();
 			}
 			else
 			{
