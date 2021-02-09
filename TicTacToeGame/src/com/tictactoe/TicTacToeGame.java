@@ -72,18 +72,7 @@ public class TicTacToeGame {
 		 
 		} 
 	 }
-	 public static void showBoard() {
-			
-			System.out.println("");
-			System.out.println("   "+board[1]+"   " + "|" +"   "+board[2]+ "   " + "|" +"   "+board[3]+ "   ");
-			System.out.println("  -------------------");
-			System.out.println("   "+board[4]+"   " + "|" +"   "+board[5]+ "   " + "|" +"   "+board[6]+ "   ");
-			System.out.println("  -------------------");
-			System.out.println("   "+board[7]+"   " + "|" +"   "+board[8]+ "   " + "|" +"   "+board[9]+ "   ");
-
-			
-
-		}
+	 
 	// taking position from player where he wants to put his input
 		public static void playerMove()
 		{
@@ -111,13 +100,15 @@ public class TicTacToeGame {
 
 		}
 
+
+ 
 // main class
 	public static void main(String args[]) {
 
 		System.out.println("Welcome to tic tac board");
 		board=creatingBoard();
 		Choosesymbol();
-		showBoard();
 		playerMove();
+
 	}
 }
