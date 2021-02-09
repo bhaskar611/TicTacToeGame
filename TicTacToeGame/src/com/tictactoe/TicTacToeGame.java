@@ -158,14 +158,19 @@ public class TicTacToeGame {
 			
 			//int position =(int) Math.floor(Math.random() * 10) % 10;
 			//
+			int position;
+			int posiToBlock = blockPosition();
+			if(posiToBlock == 0)
+			{
+			
 			boolean check = true;
 			while(check)
 			{
-				int position =(int) Math.floor(Math.random() * 10) % 10;
+				int place =(int) Math.floor(Math.random() * 10) % 10;
 				
-				if(board[position] == ' ') {
-					 System.out.println("position  : " + position + " is empty");
-						board[position] = computerSymbol;
+				if(board[place] == ' ') {
+					 System.out.println("position  : " + place + " is empty");
+						board[place] = computerSymbol;
 						showBoard();
 						turn = 0;
 						System.out.println("Player's turn");
@@ -175,6 +180,18 @@ public class TicTacToeGame {
 			}
 			
 		}
+			else 
+			{
+				position = posiToBlock;	
+				System.out.println("position  : " + position + " is empty");
+				board[position] = computerSymbol;
+				showBoard();
+				turn = 0;
+				System.out.println("Player's turn");
+			}
+				
+			
+	}
 		//runs until we get a winner
 		public  static void turnUntilWin()
 		{
@@ -256,7 +273,68 @@ public class TicTacToeGame {
 			return gotWinner;
 		}
 
- 
+		public static int blockPosition()
+		{
+			int positionToBlock = 0 ;
+			// block position in row 1
+			if (board[1] == playerSymbol && board[2] == playerSymbol && board[3] == ' ') 
+			positionToBlock = 3;
+			if (board[2] == playerSymbol && board[3] == playerSymbol && board[1] == ' ' ) 
+				positionToBlock = 1;
+			if (board[1] == playerSymbol && board[3] == playerSymbol && board[2] == ' ' ) 
+				positionToBlock = 2;
+			// block position in row 2
+			if (board[4] == playerSymbol && board[5] == playerSymbol && board[6] == ' ' ) 
+			positionToBlock = 6;
+			if (board[4] == playerSymbol && board[6] == playerSymbol && board[5] == ' ' ) 
+				positionToBlock = 5;
+			if (board[5] == playerSymbol && board[6] == playerSymbol  && board[4] == ' ') 
+				positionToBlock = 4;
+			// block position in row 3
+			if (board[7] == playerSymbol && board[8] == playerSymbol && board[9] == ' ' ) 
+			  positionToBlock = 9;
+			if (board[7] == playerSymbol && board[9] == playerSymbol  && board[8] == ' ') 
+				  positionToBlock = 8;
+			if (board[8] == playerSymbol && board[9] == playerSymbol  && board[7] == ' ') 
+				  positionToBlock = 7;
+			// block position in column 1
+			if (board[1] == playerSymbol && board[4] == playerSymbol && board[7] == ' ' ) 
+			positionToBlock = 7;
+			if (board[1] == playerSymbol && board[7] == playerSymbol  && board[4] == ' ') 
+				positionToBlock = 4;
+			if (board[4] == playerSymbol && board[7] == playerSymbol  && board[1] == ' ') 
+				positionToBlock = 1;
+			// block position in column 2
+			if (board[2] == playerSymbol && board[5] == playerSymbol && board[8] == ' ') 
+			positionToBlock =8;
+			if (board[2] == playerSymbol && board[8] == playerSymbol  && board[5] == ' ') 
+				positionToBlock =5;
+			if (board[5] == playerSymbol && board[8] == playerSymbol  && board[2] == ' ') 
+				positionToBlock =8;
+			// block position in column 3
+			if (board[3] == playerSymbol && board[6] == playerSymbol && board[9] == ' ' ) 
+			  positionToBlock =9;
+			if (board[3] == playerSymbol && board[9] == playerSymbol && board[6] == ' ') 
+				  positionToBlock =6;
+			if (board[6] == playerSymbol && board[9] == playerSymbol && board[3] == ' ' ) 
+				  positionToBlock =3;
+			// block position in diagnol 1
+			if (board[1] == playerSymbol && board[5] == playerSymbol && board[9] == ' ') 
+			positionToBlock = 9;
+			if (board[5] == playerSymbol && board[9] == playerSymbol && board[1] == ' ') 
+				positionToBlock = 1;
+			if (board[1] == playerSymbol && board[9] == playerSymbol && board[5] == ' ') 
+				positionToBlock = 5;
+			// block position in diagnol 2
+			if (board[3] == playerSymbol && board[5] == playerSymbol && board[7] == ' ') 
+			positionToBlock = 7;
+			if (board[3] == playerSymbol && board[7] == playerSymbol && board[5] == ' ') 
+				positionToBlock = 5;
+			if (board[5] == playerSymbol && board[7] == playerSymbol && board[3] == ' ') 
+				positionToBlock = 3;
+
+			return positionToBlock;
+		}
 // main class
 	public static void main(String args[]) {
 
