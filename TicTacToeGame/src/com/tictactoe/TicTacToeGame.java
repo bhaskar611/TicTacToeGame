@@ -23,7 +23,8 @@ public class TicTacToeGame {
 	 private static void chooseSymbol()
 	 {
 		 int symbol = (int) Math.floor(Math.random() * 10) % 2;
-		 if(symbol == 0 ) {
+		 if(symbol == 0 )
+		 {
 		 System.out.println("player can symbol X or O you want to choose");
 		 Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
@@ -49,33 +50,36 @@ public class TicTacToeGame {
 		}
 		
 		 }
-		else {
-			 System.out.println("computer can choose symbol X or O you want to choose");
-			 Scanner sc = new Scanner(System.in);
-			String input = sc.nextLine();
-			computerSymbol = input.charAt(0);
-			
-			if(computerSymbol == zero)
-			{
-				playerSymbol = cross;
-				computerSymbol = zero;
-				System.out.println("player symbol is : " + playerSymbol);
-				System.out.println("computerSymbol is : " + computerSymbol);
-			}
-			else if(computerSymbol == cross)
-			{
-				playerSymbol = zero;
-				computerSymbol = cross;
-				System.out.println("player symbol is : " + playerSymbol);
-				System.out.println("computerSymbol is : " +computerSymbol);
-			}
-			else
-			{
-				System.out.println("Invalid input");
-			}
 		 
-		} 
-	 }
+		else {
+			 
+		 
+		 
+				System.out.println("computer can choose symbol X or O it wants");
+				int value = (int) Math.floor(Math.random() * 10) % 2;
+		
+		 		if(value == 0)
+		 		{
+		 				playerSymbol = cross;
+		 				computerSymbol = zero;
+		 				System.out.println("player symbol is : " + playerSymbol);
+		 				System.out.println("computerSymbol is : " + computerSymbol);
+		 		}
+		 		else if(value == 1)
+		 		{
+		 				playerSymbol = zero;
+		 				computerSymbol = cross;
+		 				System.out.println("player symbol is : " + playerSymbol);
+		 				System.out.println("computerSymbol is : " +computerSymbol);
+		 		}
+		 		else
+		 		{
+		 				System.out.println("Invalid input");
+		 		}
+	 
+			} 
+		 
+}		 
 
 	 
 
@@ -133,24 +137,43 @@ public class TicTacToeGame {
 
 		}
 		public static void computerMove() {
-			System.out.println("Enter the empty position(between 1-9) where you wants to make the move ");
-			Scanner sc = new Scanner(System.in);
-			int position = sc.nextInt();
-			if (position >= 1 && position <= 9)
+			//
+			// System.out.println("Enter the empty position(between 1-9) where you wants to make the move ");
+			//Scanner sc = new Scanner(System.in);
+			//int position = sc.nextInt();
+			//if (position >= 1 && position <= 9)
+			//{
+				//if (board[position] == ' ') {
+					//System.out.println("position  : " + position + " is empty");
+					//board[position] = computerSymbol;
+					//showBoard();
+				//} else {
+					//System.out.println("Invalid move, position is not empty");
+				//}
+			//} else {
+				//System.out.println("You entered a invalid position");
+				//}
+			//turn = 0;
+			//System.out.println("Player's turn");
+			
+			//int position =(int) Math.floor(Math.random() * 10) % 10;
+			//
+			boolean check = true;
+			while(check)
 			{
-				if (board[position] == ' ') {
-					System.out.println("position  : " + position + " is empty");
-					board[position] = computerSymbol;
-					showBoard();
-				} else {
-					System.out.println("Invalid move, position is not empty");
+				int position =(int) Math.floor(Math.random() * 10) % 10;
+				
+				if(board[position] == ' ') {
+					 System.out.println("position  : " + position + " is empty");
+						board[position] = computerSymbol;
+						showBoard();
+						turn = 0;
+						System.out.println("Player's turn");
+						 check = false;
 				}
-			} else {
-				System.out.println("You entered a invalid position");
-				}
-			turn = 0;
-			System.out.println("Player's turn");
-
+				
+			}
+			
 		}
 		//runs until we get a winner
 		public  static void turnUntilWin()
