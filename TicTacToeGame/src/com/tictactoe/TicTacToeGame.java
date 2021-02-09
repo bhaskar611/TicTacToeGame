@@ -72,24 +72,43 @@ public class TicTacToeGame {
 		 
 		} 
 	 }
-	 public static void showBoard() {
-			
-			System.out.println("");
-			System.out.println("   "+board[1]+"   " + "|" +"   "+board[2]+ "   " + "|" +"   "+board[3]+ "   ");
-			System.out.println("  -------------------");
-			System.out.println("   "+board[4]+"   " + "|" +"   "+board[5]+ "   " + "|" +"   "+board[6]+ "   ");
-			System.out.println("  -------------------");
-			System.out.println("   "+board[7]+"   " + "|" +"   "+board[8]+ "   " + "|" +"   "+board[9]+ "   ");
+	 
+	// taking position from player where he wants to put his input
+		public static void playerMove()
+		{
+			System.out.println("Enter the empty position(between 1-9) where you wants to make the move ");
+			Scanner sc = new Scanner(System.in);
+			int position = sc.nextInt();
+			if(position>=1 && position <=9)
+			{
+			if(board[position]==' ')
+			{
+				board[position] = playerSymbol;
+				showBoard();
+			}
+			else
+			{
+				System.out.println("Invalid move, position is not empty");
+			}
+			}
+			else
+			{
+				System.out.println("You entered a invalid position");
 
-			
+			}
+		
 
-		} 
+		}
+
+
+ 
 // main class
 	public static void main(String args[]) {
 
 		System.out.println("Welcome to tic tac board");
 		board=creatingBoard();
 		Choosesymbol();
-		showBoard();
+		playerMove();
+
 	}
 }
