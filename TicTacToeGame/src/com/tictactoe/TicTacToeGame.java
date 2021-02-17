@@ -190,7 +190,7 @@ public class TicTacToeGame {
 		public  static void turnUntilWin()
 		{
 			char symbol = ' ';
-			boolean flag = true;
+			
 			//for first turn only
 			if(toss == 0)
 			{
@@ -217,31 +217,24 @@ public class TicTacToeGame {
 					symbol = computerSymbol;
 				}
 				winnerFound = checkWinCondition(symbol);
-				if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
-						&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' '
-						&& winnerFound != true) {
-					System.out.println("It is a tie , no one won");
-					flag = false;
-
-					break;
-				}
+				
 			}
-			if (symbol == playerSymbol && flag == true) {
+			if (symbol == playerSymbol ) {
 				System.out.println("Player won");
-			} else if (symbol == computerSymbol && flag == true) {
+			} else if (symbol == computerSymbol) {
 				System.out.println("Computer won");
 			}
-			else
-			{
-				if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
-						&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' '
-						&& winnerFound != true) {
-					System.out.println("It is a tie , no one won");
-					flag = false;
+			
+			if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
+					&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' '
+					&& winnerFound != true) {
+				System.out.println("It is a tie , no one won");
+				
 
-					
-				}
+				
 			}
+				
+			
 		}
 
 			
