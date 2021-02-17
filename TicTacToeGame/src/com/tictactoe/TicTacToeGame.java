@@ -159,39 +159,29 @@ public class TicTacToeGame {
 			//int position =(int) Math.floor(Math.random() * 10) % 10;
 			//
 			int position;
-			int posiToBlock = blockPosition();
-			if(posiToBlock == 0)
-			{
-			
-
-			
-			boolean check = true;
-			while(check)
-			{
-				int place =(int) Math.floor(Math.random() * 10) % 10;
-				
-				if(board[place] == ' ') {
-					 System.out.println("position  : " + place + " is empty");
-						board[place] = computerSymbol;
-						showBoard();
-						turn = 0;
-						System.out.println("Player's turn");
-						 check = false;
+			int winPosition = computerWinPosition();
+			int blockPosition = blockPosition();
+			if (winPosition != 0) {
+				position = winPosition;
+			} else if (blockPosition != 0) {
+				position = blockPosition;
+			} else {
+				int choice = choicesIfNeitherIsWinning();
+				if (choice != 0) {
+					position = choice;
+				} else {
+					position = (int) Math.floor(Math.random() * 10) % 10;
+					while (board[position] != ' ') {
+						position = (int) Math.floor(Math.random() * 10) % 10;
+					}
 				}
-				
-			}
-			
-			}
-			else 
-			{
-				position = posiToBlock;	
-				System.out.println("position  : " + position + " is empty");
-				board[position] = computerSymbol;
-				showBoard();
-				turn = 0;
-				System.out.println("Player's turn");
 			}
 
+			System.out.println("position  : " + position + " is empty");
+			board[position] = computerSymbol;
+			showBoard();
+			turn = 0;
+			System.out.println("Player's turn");
 			
 				
 			
@@ -226,6 +216,7 @@ public class TicTacToeGame {
 					symbol = computerSymbol;
 				}
 				winnerFound = checkWinCondition(symbol);
+				
 			}
 			if(symbol==playerSymbol)
 			{
@@ -235,9 +226,15 @@ public class TicTacToeGame {
 			{
 				System.out.println("Computer won");
 			}
+			if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
+					&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' '
+					&& winnerFound != true) {
+				System.out.println("It is a tie , no one won");
+		
+			}
 		}
 
-		
+			
 		//public winning condition check
 		public  static boolean  checkWinCondition(char symbol)
 		{
@@ -339,7 +336,82 @@ public class TicTacToeGame {
 			return positionToBlock;
 		}
 
-		
+		public static int computerWinPosition() {
+			int winningPosition = 0;
+			// finding winning condition for all rows , columns and diagnols
+			if (board[1] == computerSymbol && board[2] == computerSymbol && board[3] == ' ')
+				winningPosition = 3;
+			if (board[2] == computerSymbol && board[3] == computerSymbol && board[1] == ' ')
+				winningPosition = 1;
+			if (board[1] == computerSymbol && board[3] == computerSymbol && board[2] == ' ')
+				winningPosition = 2;
+			if (board[4] == computerSymbol && board[5] == computerSymbol && board[6] == ' ')
+				winningPosition = 6;
+			if (board[4] == computerSymbol && board[6] == computerSymbol && board[5] == ' ')
+				winningPosition = 5;
+			if (board[5] == computerSymbol && board[6] == computerSymbol && board[4] == ' ')
+				winningPosition = 4;
+			if (board[7] == computerSymbol && board[8] == computerSymbol && board[9] == ' ')
+				winningPosition = 9;
+			if (board[7] == computerSymbol && board[9] == computerSymbol && board[8] == ' ')
+				winningPosition = 8;
+			if (board[8] == computerSymbol && board[9] == computerSymbol && board[7] == ' ')
+				winningPosition = 7;
+			if (board[1] == computerSymbol && board[4] == computerSymbol && board[7] == ' ')
+				winningPosition = 7;
+			if (board[1] == computerSymbol && board[7] == computerSymbol && board[4] == ' ')
+				winningPosition = 4;
+			if (board[4] == computerSymbol && board[7] == computerSymbol && board[1] == ' ')
+				winningPosition = 1;
+			if (board[2] == computerSymbol && board[5] == computerSymbol && board[8] == ' ')
+				winningPosition = 8;
+			if (board[2] == computerSymbol && board[8] == computerSymbol && board[5] == ' ')
+				winningPosition = 5;
+			if (board[5] == computerSymbol && board[8] == computerSymbol && board[2] == ' ')
+				winningPosition = 8;
+			if (board[3] == computerSymbol && board[6] == computerSymbol && board[9] == ' ')
+				winningPosition = 9;
+			if (board[3] == computerSymbol && board[9] == computerSymbol && board[6] == ' ')
+				winningPosition = 6;
+			if (board[6] == computerSymbol && board[9] == computerSymbol && board[3] == ' ')
+				winningPosition = 3;
+			if (board[1] == computerSymbol && board[5] == computerSymbol && board[9] == ' ')
+				winningPosition = 9;
+			if (board[5] == computerSymbol && board[9] == computerSymbol && board[1] == ' ')
+				winningPosition = 1;
+			if (board[1] == computerSymbol && board[9] == computerSymbol && board[5] == ' ')
+				winningPosition = 5;
+			if (board[3] == computerSymbol && board[5] == computerSymbol && board[7] == ' ')
+				winningPosition = 7;
+			if (board[3] == computerSymbol && board[7] == computerSymbol && board[5] == ' ')
+				winningPosition = 5;
+			if (board[5] == computerSymbol && board[7] == computerSymbol && board[3] == ' ')
+				winningPosition = 3;
+
+			return winningPosition;
+		}
+
+		// choice1 is to take available corner
+		public static int firstChoice() {
+			int firstChoice = 0;
+			if (board[1] == ' ')
+				firstChoice = 1;
+			if (board[3] == ' ')
+				firstChoice = 3;
+			if (board[7] == ' ')
+				firstChoice = 7;
+			if (board[9] == ' ')
+				firstChoice = 9;
+			return firstChoice;
+		}
+
+		// return first and subsequent choices if neither is winning
+		public static int choicesIfNeitherIsWinning() {
+			int choice = 0;
+			// choice1 to take available corner position
+			choice = firstChoice();
+			return choice;
+		}	
 // main class
 	public static void main(String args[]) {
 
