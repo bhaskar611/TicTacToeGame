@@ -230,15 +230,13 @@ public class TicTacToeGame {
 					&& winnerFound != true) {
 				System.out.println("It is a tie , no one won");
 				
-
-				
 			}
 				
 			
 		}
 
 			
-		//public winning condition check
+		// winning condition check
 		public  static boolean  checkWinCondition(char symbol)
 		{
 			boolean gotWinner = false;
@@ -250,7 +248,8 @@ public class TicTacToeGame {
 			{
 				gotWinner =true;
 			}
-			if(board[7] == symbol && board[5]==symbol &&board[9]==symbol)
+			
+				if(board[7] == symbol && board[8]==symbol &&board[9]==symbol)
 			{
 				gotWinner =true;
 			}
@@ -441,5 +440,26 @@ public class TicTacToeGame {
 		
 		  toss = makeToss();
 		 turnUntilWin();
+		 while(true)
+		 {
+				System.out.println("Enter 1 to play one more game");
+				System.out.println("Enter 2 to  exit game");
+				Scanner scn = new Scanner(System.in);
+				int option = scn.nextInt();
+				if (option == 1)
+				{
+					System.out.println("Welcome to  another tictactoe  board game");
+					board = creatingBoard();
+					chooseSymbol();
+					showBoard();
+					toss = makeToss();
+					turnUntilWin();
+				}
+				else
+				{
+					System.out.println("You have exited from the game");
+					
+				}
+			}
 	}
 }
