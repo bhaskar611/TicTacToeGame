@@ -190,6 +190,7 @@ public class TicTacToeGame {
 		public  static void turnUntilWin()
 		{
 			char symbol = ' ';
+			boolean flag = true;
 			//for first turn only
 			if(toss == 0)
 			{
@@ -216,21 +217,30 @@ public class TicTacToeGame {
 					symbol = computerSymbol;
 				}
 				winnerFound = checkWinCondition(symbol);
-				
+				if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
+						&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' '
+						&& winnerFound != true) {
+					System.out.println("It is a tie , no one won");
+					flag = false;
+
+					break;
+				}
 			}
-			if(symbol==playerSymbol)
-			{
+			if (symbol == playerSymbol && flag == true) {
 				System.out.println("Player won");
+			} else if (symbol == computerSymbol && flag == true) {
+				System.out.println("Computer won");
 			}
 			else
 			{
-				System.out.println("Computer won");
-			}
-			if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
-					&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' '
-					&& winnerFound != true) {
-				System.out.println("It is a tie , no one won");
-		
+				if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
+						&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' '
+						&& winnerFound != true) {
+					System.out.println("It is a tie , no one won");
+					flag = false;
+
+					
+				}
 			}
 		}
 
@@ -412,6 +422,20 @@ public class TicTacToeGame {
 			choice = firstChoice();
 			return choice;
 		}	
+		// return position for subsequent choices after firstchoice
+		public static int subsequentChoices() {
+			int subsequentChoice = 0;
+			if (board[5] == ' ') {
+				subsequentChoice = 5;
+			} else {
+				if (board[4] == ' ')
+					subsequentChoice = 4;
+				if (board[6] == ' ')
+					subsequentChoice = 6;
+			}
+
+			return subsequentChoice;
+		}
 // main class
 	public static void main(String args[]) {
 
